@@ -1,5 +1,6 @@
 html {
   background-color: #C5FFFF;
+  font-size: 62.5%;
 }
 
 .app {
@@ -7,4 +8,13 @@ html {
   margin: auto;
   width: 50%;
   text-align: center;
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
 }
