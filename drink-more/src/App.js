@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
-import './App.css';
+import './style.css';
 import Welcome from './welcome/Welcome.jsx';
 import GetStarted from './getStarted/GetStarted.jsx';
 import Login from './login/Login.jsx';

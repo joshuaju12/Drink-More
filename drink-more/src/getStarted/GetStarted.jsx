@@ -1,6 +1,5 @@
 import React from 'react';
 import {useState} from 'react';
-import './getStarted.css';
 import plant1 from '../assets/plant1stage1.png';
 import plant2 from '../assets/plant2stage1.png';
 import plant3 from '../assets/plant3stage1.png';
