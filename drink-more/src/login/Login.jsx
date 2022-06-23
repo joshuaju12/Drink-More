@@ -21,8 +21,13 @@ const Login = ({setName, setUserData}) => {
           alert('user not found');
           setUser('');
         } else {
-          setUserData(res.data[0]);
-          setName("main");
+          const updatedData = {...res.data[0], currentDate: new Date().toISOString()}
+          axios.put('http://localhost:8080/users', {username: updatedData.username, currentDate: updatedData.currentDate})
+            .then((res) => {
+              console.log(res);
+              setUserData(res.data);
+              setName("main");
+            })
         }
       })
   }

@@ -4,6 +4,7 @@ const postUser = (req, res) => {
 
   addUser(req.body, (err, response) => {
     if (err) {
+      console.log(req.body)
       console.log('error at controller');
     } else {
       res.header("Access-Control-Allow-Origin", "*");

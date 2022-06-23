@@ -28,3 +28,9 @@ exports.findUser = (data, cb) => {
       console.log(err, 'error at findUser at model');
     })
 };
+
+
+exports.editUser = (data, cb) => {
+  User.findOneAndUpdate({username: data.username}, {currentDate: data.currentDate})
+    .then(cb);
+}

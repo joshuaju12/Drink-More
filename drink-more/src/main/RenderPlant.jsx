@@ -36,7 +36,7 @@ const RenderPlant = ({data, waterRequired}) => {
 
 
   return (
-    <div>placeholder</div>
+    <div>{data.currentDate} is current date, {data.dateCreated}, date created</div>
   )
 
 }
