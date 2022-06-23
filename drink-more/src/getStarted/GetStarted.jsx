@@ -16,7 +16,7 @@ const GetStarted = ({setName, setUserData}) => {
     plantName: '',
     weight: '',
     age: '',
-    plantStage: 0,
+    plantStage: 1,
     waterIntake: 0,
     daysWithoutWater: 0,
     daysWithWater: 0
@@ -148,7 +148,7 @@ const GetStarted = ({setName, setUserData}) => {
             Calculate water intake
           </label>
           <div className="requirement">
-            <label className="requirementLabel">Weight :</label>
+            <label className="requirementLabel">Weight(lb) :</label>
             <input type="text"
               className="weightInput"
               value={data.weight}

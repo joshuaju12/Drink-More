@@ -89,3 +89,19 @@ form {
 .loginForm {
   padding: 4rem;
 }
+
+.infoBar {
+  display: flex;
+  justify-content: space-between;
+  /* border: solid; */
+  text-align: left;
+  font-size: 2rem;
+}
+
+.username {
+  padding-left: 2rem;
+}
+
+.days {
+  padding-right: 2rem;
+}
