@@ -6,7 +6,7 @@ import plant3 from '../assets/plant3stage1.png';
 import axios from 'axios';
 
 
-const GetStarted = ({setName}) => {
+const GetStarted = ({setName, setUserData}) => {
 
 
   const [selectedSeed, setSelectedSeed] = useState('none');
@@ -83,8 +83,12 @@ const GetStarted = ({setName}) => {
       age: Number(data.age)
       })
         .then((res) => {
-          console.log('added');
-          setName("main");
+          axios.get('http://localhost:8080/users', {params: {username: data.username}})
+            .then((response) => {
+              setUserData(response.data[0]);
+              setName("main");
+              console.log('added');
+            })
         })
         .catch((err) => {
           console.log('error posting');

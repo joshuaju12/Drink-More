@@ -1,7 +1,7 @@
 const {findUser} = require('../model');
 
 const getUser = (req, res) => {
-  findUser({}, (response) => {
+  findUser({username: req.query.username}, (response) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.send(response);
   })

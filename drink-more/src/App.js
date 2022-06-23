@@ -10,6 +10,7 @@ import Main from './main/Main.jsx';
 function App() {
 
   const [name, setName] = useState('welcome');
+  const [userData, setUserData] = useState({});
 
 
 
@@ -26,7 +27,10 @@ function App() {
     return (
       <div className="app">
         <h1>Drink More</h1>
-        <GetStarted setName={setName} />
+        <GetStarted
+          setName={setName}
+          setUserData={setUserData}
+        />
       </div>
     )
   }
@@ -35,7 +39,10 @@ function App() {
     return (
       <div className="app">
         <h1>Drink More</h1>
-        <Login setName={setName} />
+        <Login
+          setName={setName}
+          setUserData={setUserData}
+        />
       </div>
     )
   }
@@ -44,7 +51,11 @@ function App() {
     return (
       <div className="app">
         <h1>DrinkMore</h1>
-        <Main setName={setName} />
+        <Main
+          setName={setName}
+          userData={userData}
+          setUserData={setUserData}
+        />
       </div>
     )
   }

@@ -1,7 +1,8 @@
 import React from 'react';
 import {useState} from 'react';
+import axios from 'axios';
 
-const Login = ({setName}) => {
+const Login = ({setName, setUserData}) => {
 
   const [user, setUser] = useState('');
 
@@ -14,7 +15,16 @@ const Login = ({setName}) => {
   }
 
   const handleLoginClick = (e) => {
-    setName("main");
+    axios.get('http://localhost:8080/users', {params: {username: user}})
+      .then((res) => {
+        if (res.data.length === 0) {
+          alert('user not found');
+          setUser('');
+        } else {
+          setUserData(res.data[0]);
+          setName("main");
+        }
+      })
   }
 
   return (
