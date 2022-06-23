@@ -3,10 +3,16 @@ import React from 'react';
 
 const Main = ({setName}) => {
 
+  const handleBackClick = (e) => {
+    setName("getStarted")
+  }
+
   return (
-    <div>
-      This is the main
-    </div>
+    <>
+      <div className="buttons">
+        <button onClick={handleBackClick}>Back</button>
+      </div>
+    </>
   )
 };
 

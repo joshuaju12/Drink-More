@@ -16,3 +16,15 @@ const userSchema = mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+exports.addUser = (data, cb) => {
+  let userInfo = new User(data);
+  userInfo.save(cb);
+};
+
+exports.findUser = (data, cb) => {
+  User.find(data)
+    .then(cb)
+    .catch((err) => {
+      console.log(err, 'error at findUser at model');
+    })
+};

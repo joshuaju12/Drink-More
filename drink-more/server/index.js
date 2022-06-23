@@ -1,15 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const db = require('./db/index.js');
-
-
+const controller = require('./controllers');
 
 const app = express();
-
-
-
-
-
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -22,11 +16,12 @@ app.options("/*", function(req, res, next){
   res.sendStatus(200);
 });
 
-app.post('/users', (req, res) => {
-  console.log(req.body);
-  res.header("Access-Control-Allow-Origin", "*");
-  res.send('hello');
-})
+app.post('/users', controller.postUser);
+
+app.get('/users', controller.getUser);
+
+// res.header("Access-Control-Allow-Origin", "*");
+
 
 app.listen(process.env.PORT, () => {
   console.log(`listening on port ${process.env.PORT}`)

@@ -17,47 +17,80 @@ const GetStarted = ({setName}) => {
     weight: '',
     age: '',
     plantStage: 0,
-    // dateCreated: new Date(), add these at submit
-    // currentDate: new Date(),
     waterIntake: 0,
     daysWithoutWater: 0,
     daysWithWater: 0
   });
 
-  const selected = {"backgroundColor": "#8EFFF8"}
+  const selected = {"backgroundColor": "#8EFFF8"};
 
   const handleBackClick = () => {
     setName('welcome');
-  }
+  };
 
   const handlePlantClick = (e) => {
     setSelectedSeed(e.target.getAttribute('value'))
-    setData({...data, plantType: e.target.getAttribute('value')});
-  }
+    setData({...data, plantType: Number(e.target.getAttribute('value'))});
+  };
 
   const handleUserChange = (e) => {
     setData({...data, username: e.target.value});
-  }
+  };
 
   const handlePlantChange = (e) => {
     setData({...data, plantName: e.target.value});
-  }
+  };
 
   const handleWeightChange = (e) => {
     setData({...data, weight: e.target.value});
-  }
+  };
 
   const handleAgeChange = (e) => {
     setData({...data, age: e.target.value});
-  }
+  };
+
+  const checkForm = (form) => {
+    if (form.username === '' || form.plantName === '') {
+      return ('noString');
+    }
+    if (form.plantType === '') {
+      return ('noPlant');
+    }
+    if (form.weight === '' || form.age === '') {
+      return ('noString');
+    }
+    if (isNaN(Number(form.weight)) || isNaN(Number(form.age))) {
+      return ('noNumber')
+    }
+    return ('pass');
+  };
+
 
   const handleStartClick = (e) => {
-    setData({...data, dateCreated: new Date(), currentDate: new Date()})
-    setName("main");
-    axios.post('http://localhost:8080/users', data);
-  }
+    const check = checkForm(data);
 
-  // const date = new Date().toISOString();
+    if (check === 'noString') {
+      alert('please fill in all fields');
+    } else if (check === 'noPlant') {
+      alert('please pick a plant');
+    } else if (check === 'noNumber') {
+      alert('Weight and Age must be a number');
+    } else {
+      axios.post('http://localhost:8080/users', {...data,
+      dateCreated: new Date().toISOString(),
+      currentDate: new Date().toISOString(),
+      weight: Number(data.weight),
+      age: Number(data.age)
+      })
+        .then((res) => {
+          console.log('added');
+          setName("main");
+        })
+        .catch((err) => {
+          console.log('error posting');
+        });
+    }
+  };
 
 
   return (
@@ -75,7 +108,7 @@ const GetStarted = ({setName}) => {
         </div>
         <div className="plantContainer">
           <div>
-            <label>Pick a seed</label>
+            <label>Pick a plant</label>
           </div>
           <img
             className="seeds"
