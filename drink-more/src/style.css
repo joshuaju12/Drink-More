@@ -105,3 +105,12 @@ form {
 .days {
   padding-right: 2rem;
 }
+
+.waterLabel {
+  padding-right: 1rem;
+}
+
+.dailyQuota {
+  font-size: 2rem;
+  padding-top: 4rem;
+}

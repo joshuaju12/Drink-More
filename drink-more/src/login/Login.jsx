@@ -24,11 +24,13 @@ const Login = ({setName, setUserData}) => {
           const updatedData = {...res.data[0], currentDate: new Date().toISOString()}
           axios.put('http://localhost:8080/users', {username: updatedData.username, currentDate: updatedData.currentDate})
             .then((res) => {
-              console.log(res);
               setUserData(res.data);
               setName("main");
             })
         }
+      })
+      .catch((err) => {
+        console.log('error at login');
       })
   }
 
