@@ -3,6 +3,7 @@ import {useState} from 'react';
 import plant1 from '../assets/plant1stage1.png';
 import plant2 from '../assets/plant2stage1.png';
 import plant3 from '../assets/plant3stage1.png';
+import axios from 'axios';
 
 
 const GetStarted = ({setName}) => {
@@ -19,7 +20,6 @@ const GetStarted = ({setName}) => {
     // dateCreated: new Date(), add these at submit
     // currentDate: new Date(),
     waterIntake: 0,
-    // waterRequired: 0,
     daysWithoutWater: 0,
     daysWithWater: 0
   });
@@ -53,8 +53,12 @@ const GetStarted = ({setName}) => {
 
   const handleStartClick = (e) => {
     setData({...data, dateCreated: new Date(), currentDate: new Date()})
-    setName("main")
+    setName("main");
+    axios.post('http://localhost:8080/users', data);
   }
+
+  // const date = new Date().toISOString();
+
 
   return (
     <>
