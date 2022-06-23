@@ -20,8 +20,6 @@ app.post('/users', controller.postUser);
 
 app.get('/users', controller.getUser);
 
-// res.header("Access-Control-Allow-Origin", "*");
-
 
 app.listen(process.env.PORT, () => {
   console.log(`listening on port ${process.env.PORT}`)
