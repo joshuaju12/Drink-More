@@ -37,19 +37,55 @@ button:hover {
 }
 
 form {
-  border: 3px solid black;
+  font-size: 2rem;
 }
 
 .plantContainer {
   width: 100%;
 }
 
-img {
+.seeds {
   width: 20rem;
   display: inline;
 }
 
-img:hover {
+.seeds:hover {
   background-color: #8EFFF8;
   cursor: pointer;
+}
+
+.user {
+  padding: 3rem 0 2rem 0;
+}
+
+.userLabel {
+  padding-right: 1rem;
+}
+
+.weightAge {
+  padding-top: 4rem;
+}
+
+.requirement {
+  padding-top: 2rem;
+}
+
+.requirementLabel {
+  padding-right: 1rem;
+}
+
+.weightInput {
+  margin-right: 6rem;
+}
+
+.plantLabel {
+  padding-right: 1rem;
+}
+
+.userLabel {
+  padding-right: 1rem;
+}
+
+.loginForm {
+  padding: 4rem;
 }

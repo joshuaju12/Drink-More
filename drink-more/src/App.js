@@ -4,6 +4,7 @@ import './style.css';
 import Welcome from './welcome/Welcome.jsx';
 import GetStarted from './getStarted/GetStarted.jsx';
 import Login from './login/Login.jsx';
+import Main from './main/Main.jsx';
 
 
 function App() {
@@ -35,6 +36,15 @@ function App() {
       <div className="app">
         <h1>Drink More</h1>
         <Login setName={setName} />
+      </div>
+    )
+  }
+
+  if (name === 'main') {
+    return (
+      <div className="app">
+        <h1>DrinkMore</h1>
+        <Main setName={setName} />
       </div>
     )
   }
