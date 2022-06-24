@@ -79,6 +79,7 @@ const GetStarted = ({setName, setUserData}) => {
       axios.post('http://localhost:8080/users', {...data,
       dateCreated: new Date().toISOString(),
       currentDate: new Date().toISOString(),
+      timer: new Date().toISOString(),
       weight: Number(data.weight),
       age: Number(data.age)
       })

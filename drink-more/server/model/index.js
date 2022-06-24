@@ -11,7 +11,8 @@ const userSchema = mongoose.Schema({
   daysWithoutWater: Number,
   daysWithWater: Number,
   dateCreated: String,
-  currentDate: String
+  currentDate: String,
+  timer: String
 });
 
 const User = mongoose.model('User', userSchema);
@@ -31,6 +32,6 @@ exports.findUser = (data, cb) => {
 
 
 exports.editUser = (data, cb) => {
-  User.findOneAndUpdate({username: data.username}, {currentDate: data.currentDate})
+  User.findOneAndUpdate({username: data.username}, data)
     .then(cb);
 }
