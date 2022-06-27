@@ -79,7 +79,7 @@ const Main = ({setName, userData, setUserData}) => {
         }
         axios.put('http://localhost:8080/users', {
           username: userData.username,
-          waterIntake: waterLevel,
+          waterIntake: waterLevel + Number(waterAmount),
           daysWithoutWater: 0,
           daysWithWater: wateredDays,
           plantStage: stage
@@ -93,6 +93,17 @@ const Main = ({setName, userData, setUserData}) => {
           })
       } else {
         setWaterLevel(waterLevel + Number(waterAmount));
+        axios.put('http://localhost:8080/users', {
+          username: userData.username,
+          waterIntake: waterLevel + Number(waterAmount),
+        })
+          .then(() => {
+            axios.get('http://localhost:8080/users', {params: {username: userData.username}})
+              .then((res) => {
+                setUserData(res.data[0]);
+                setWaterAmount('');
+              })
+          })
         setWaterAmount('');
       }
     }
@@ -110,7 +121,8 @@ const Main = ({setName, userData, setUserData}) => {
           username: userData.username,
           timer: newDate,
           daysWithoutWater: userData.daysWithoutWater + (Math.floor(difference / 24)),
-          daysWithWater: 0
+          daysWithWater: 0,
+          waterIntake: 0
         })
           .then(() => {
             axios.get('http://localhost:8080/users', {params: {username: userData.username}})
