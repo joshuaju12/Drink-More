@@ -32,6 +32,6 @@ exports.findUser = (data, cb) => {
 
 
 exports.editUser = (data, cb) => {
-  User.findOneAndUpdate({username: data.username}, data)
+  User.findOneAndUpdate({username: data.username}, data, {new: true})
     .then(cb);
 }

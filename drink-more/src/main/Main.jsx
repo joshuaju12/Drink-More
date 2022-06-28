@@ -61,6 +61,7 @@ const Main = ({setName, userData, setUserData}) => {
   const handleWaterClick = (e) => {
     if (waterLevel === waterRequired(userData)) {
       alert('Done for the day!');
+      setWaterAmount('');
       return;
     }
     if (waterAmount === '') {
@@ -109,13 +110,30 @@ const Main = ({setName, userData, setUserData}) => {
     }
   }
 
+  const handleTestClick = (e) => {
+    var newDate = new Date(userData.dateCreated);
+    newDate.setDate(newDate.getDate()-1);
+    axios.put('http://localhost:8080/users', {
+      username: userData.username,
+      dateCreated: newDate,
+      waterIntake: 0
+    })
+    .then((res) => {
+      setUserData(res.data);
+      setWaterLevel(0);
+      setWaterAmount('');
+    });
+  }
+
   useEffect(() => {
     console.log('useEffect');
     const date1 = new Date(userData.timer);
     const date2 = new Date(userData.currentDate);
     const difference = Math.floor(Math.abs(date2 - date1) / (1000 * 60 * 60));
+    console.log(difference);
     if (difference >= 24) {
-      const newDate = new Date(date1.getTime() + (difference * 60 * 60 * 1000).toISOString())
+      console.log('this shows');
+      const newDate = new Date(date1.getTime() + (difference * 60 * 60 * 1000)).toISOString();
       if (userData.waterIntake < waterRequired(userData)) {
         axios.put('http://localhost:8080/users', {
           username: userData.username,
@@ -163,6 +181,7 @@ const Main = ({setName, userData, setUserData}) => {
       <div className="buttons">
         <button onClick={handleBackClick}>Exit</button>
         <button onClick={handleWaterClick}>Water!</button>
+        <button onClick={handleTestClick}>Add Day</button>
       </div>
     </>
   )
